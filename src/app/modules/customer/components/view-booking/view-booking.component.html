@@ -1,0 +1,52 @@
+<div class="center-form">
+    <h1 class="page-title">My Booking</h1>
+    <nz-table [nzData]="bookings" [nzShowPagination]="'false'">
+        <thead>
+            <tr>
+                <th>Service Name</th>
+                <th>Service Type</th>
+                <th>Booking Date</th>
+                <th>Price</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let booking of bookings">
+                <td>{{booking.serviceName}}</td>
+                <td>{{booking.serviceType}}</td>
+                <td>{{booking.bookingDate}}</td>
+                <td>{{booking.price}}</td>
+                <td>
+                    <ng-container *ngIf="booking.bookingStatus ==='PENDING'">
+                        <nz-tag nzColor="processing">
+                            <span nz-icon nzType="sync" nzSpin></span>
+                            <span>Pending</span>
+                        </nz-tag>
+                    </ng-container>
+                    <ng-container *ngIf="booking.bookingStatus ==='BOOKED'">
+                        <nz-tag nzColor="success">
+                            <span nz-icon nzType="check-circle"></span>
+                            <span>Booked</span>
+                        </nz-tag>
+                    </ng-container>
+                    <ng-container *ngIf="booking.bookingStatus ==='REJECTED'">
+                        <nz-tag nzColor="error">
+                            <span nz-icon nzType="close-circle"></span>
+                            <span>Rejected</span>
+                        </nz-tag>
+                    </ng-container>
+                    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+                    <button (click)="showConfirm(booking.id)" style="font-size:18px; border: none; background-color: white;" class="material-icons">&#xe872;</button>
+                    
+                    
+                </td>
+
+            </tr>
+        </tbody>
+    </nz-table>
+
+    <div class="pagination">
+        <nz-pagination (nzPageIndexChange)="pageIndexChange($event)" [nzPageIndex]="currentPage" [nzTotal]="total"
+        [nzPageSize]="5"></nz-pagination>
+    </div>
+</div>

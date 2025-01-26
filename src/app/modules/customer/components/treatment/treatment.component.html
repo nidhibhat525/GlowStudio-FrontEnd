@@ -1,0 +1,49 @@
+<div class="center-form">
+    
+    <div class="service-container">
+        <div class="service-row" *ngFor="let service of service">
+            <nz-card style="width: 300px; margin: 16px;" [nzActions]="[actionEdit, actionView]">
+                <nz-skeleton [nzActive]="true" [nzLoading]="loading" [nzAvatar]="{size:'large'}">
+                    <nz-card-meta class="thick" [nzAvatar]="avatarTemplate" nzTitle="{{service.serviceName}}" nzDescription="Type: {{service.type}}">
+                    </nz-card-meta>
+                    <nz-card-meta class="thick" style="margin-left: 49px;" nzDescription="Price: {{service.price}}">
+                    </nz-card-meta>
+                </nz-skeleton>
+            </nz-card>
+
+            <ng-template #avatarTemplate>
+                <nz-avatar nzSrc="https://img.freepik.com/free-photo/front-view-sensual-woman-with-ginger-wavy-hair-studio-shot-elegant-girl-green-dress-isolated-yellow-space_197531-15211.jpg?t=st=1734615891~exp=1734619491~hmac=117a7b1b9f0604dfa77efa2a1c5e3d0b4e87b92ed78edf9f53849949f95f12f6&w=996">
+                </nz-avatar>
+            </ng-template>
+
+            <ng-template #actionEdit>
+                <span nz-icon nzType="calendar" [nzTheme]="'twotone'" class="icon" (click)="showModalMiddle(service.id)"></span>
+                
+            </ng-template>
+
+            <ng-template #actionView><span nz-icon nzType="info-circle" [nzTheme]="'twotone'" routerLink="/customer/details"></span>
+            </ng-template>
+            
+
+            
+        </div>
+    </div>
+    <div class="pagination">
+        <nz-pagination [nzPageIndex]="currentPage" [nzTotal]="total" [nzPageSize]="1" 
+        (nzPageIndexChange)="pageIndexChange($event)"></nz-pagination>
+    </div>
+</div>
+
+
+<nz-modal nzTitle="Book Service" nzCentered [(nzVisible)]="isVisibleMiddle" (nzOnCancel)="handleCancelMiddle()" (nzOnOk)="handleOkMiddle()" [nzOkDisabled]="!bookingDate" >
+<ng-container *nzModalContent>
+    <div class="modal-content">
+        <nz-date-picker style="width: 100%;" ngDefaultControl [(ngModel)]="date" (ngModelChange)="onChange($event)"></nz-date-picker>
+    </div>
+
+    
+</ng-container>
+</nz-modal>
+
+
+  

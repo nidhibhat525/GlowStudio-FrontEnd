@@ -1,0 +1,59 @@
+<div class="center-form">
+    <h1 class="page-title">Bookings</h1>
+
+    <nz-table [nzShowPagination]="'false'" [nzData]="bookings">
+         <thead>
+            <tr>
+                <th>Service Name</th>
+                <th>Service Type</th>
+                <th>Booking Date</th>
+                <th>Price</th>
+                <th>User Name</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr *ngFor="let bookings of bookings">
+                <td>{{bookings.serviceName}}</td>
+                <td>{{bookings.serviceType}}</td>
+                <td>{{bookings.bookingDate}}</td>
+                <td>{{bookings.price}}</td>
+                <td>{{bookings.userName}}</td>
+                <td>
+                    <ng-container *ngIf="bookings.bookingStatus==='PENDING'">
+                        <nz-tag nzColor="processing">
+                            <span nz-icon nzType="sync" nzSpin></span>
+                            <span>Pending</span>
+                        </nz-tag>
+                    </ng-container>
+                    <ng-container *ngIf="bookings.bookingStatus==='BOOKED'">
+                        <nz-tag nzColor="success">
+                            <span nz-icon nzType="check-circle"></span>
+                            <span>Booked</span>
+                        </nz-tag>
+                    </ng-container>
+                    <ng-container *ngIf="bookings.bookingStatus ==='REJECTED'">
+                        <nz-tag nzColor="error">
+                            <!-- <span nz-icon nzType="close-circle" nzSpin></span> -->
+                            <span>Rejected</span>
+                        </nz-tag>
+                    </ng-container>
+                </td>
+                <td>
+                        <span *ngIf="bookings.bookingStatus ==='PENDING'">
+                            <span nz-icon [nzType]="'check-circle'" [nzTheme]="'twotone'" [nzTwotoneColor]="'#52c41a'" class="icon"
+                            (click)="changeBookingStatus(bookings.id, 'Book')">
+
+                            </span>
+                            <span nz-icon [nzType]="'close-circle'" [nzTheme]="'twotone'" [nzTwotoneColor]="'#ff0000'" class="icon"
+                            (click)="changeBookingStatus(bookings.id, 'Reject')"></span>
+                        </span>
+                </td>
+            </tr>
+         </tbody>
+    </nz-table>
+    <div class="pagination">
+        <nz-pagination [nzPageIndex]="currentPage" [nzTotal]="total" [nzPageSize]="5" (nzPageIndexChange)="pageIndexChange($event)"></nz-pagination>
+    </div>
+</div>

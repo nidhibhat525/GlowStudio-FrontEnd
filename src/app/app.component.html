@@ -1,0 +1,70 @@
+<nz-layout>
+  <!-- Sidebar -->
+  <nz-sider nzCollapsible [nzWidth]="300" *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn" [nzCollapsedWidth]="80" nzTheme="dark" [(nzCollapsed)]="isCollapsed">
+    <div class="logo" style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: 500; text-align: center;font-size: large;">GLOW STUDIO</div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <!-- Register Link -->
+      <li nz-menu-item routerLink="/register">
+        <span nz-icon nzType="user"></span>
+        <span *ngIf="!isCollapsed" class="menu-text">Register</span>
+      </li>
+      <!-- Login Link -->
+      <li nz-menu-item routerLink="/">
+        <span nz-icon nzType="login"></span>
+        <span *ngIf="!isCollapsed" class="menu-text">Login</span>
+      </li>
+    </ul>
+  </nz-sider>
+
+  <nz-sider nzCollapsible [nzWidth]="300" *ngIf="isAdminLoggedIn" [nzCollapsedWidth]="80" nzTheme="dark" [(nzCollapsed)]="isCollapsed">
+    <div class="logo"></div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <!-- Register Link -->
+      <li nz-menu-item routerLink="/admin/dashboard">
+        <span nz-icon nzType="appstore"></span>
+        <span *ngIf="!isCollapsed" class="menu-text">Services</span>
+      </li>
+      <!-- Login Link -->
+      
+      <li nz-menu-item routerLink="/admin/bookings">
+        <span nz-icon nzType="calendar"></span>
+        <span *ngIf="!isCollapsed" class="menu-text">Booking</span>
+      </li>
+      <li nz-menu-item (click)="logout()">
+        <span nz-icon nzType="logout"></span>
+        <span *ngIf="!isCollapsed" class="menu-text">Logout</span>
+      </li>
+    </ul>
+  </nz-sider>
+
+  <nz-sider nzCollapsible [nzWidth]="300" *ngIf="isCustomerLoggedIn" [nzCollapsedWidth]="80" nzTheme="dark" [(nzCollapsed)]="isCollapsed">
+    <div class="logo"></div>
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <!-- Register Link -->
+      <li nz-menu-item routerLink="/customer/treatment">
+        <span nz-icon nzType="product"></span>
+        <span *ngIf="!isCollapsed" class="menu-text">Services</span>
+      </li>
+      <!-- Login Link -->
+      <li nz-menu-item routerLink="/customer/booking">
+        <span nz-icon nzType="calendar"></span>
+        <span *ngIf="!isCollapsed" class="menu-text">Booking</span>
+      </li>
+      <li nz-menu-item routerLink="/customer/details">
+        <span nz-icon nzType="phone"></span>
+        <span *ngIf="!isCollapsed" class="menu-text">Contact Us</span>
+      </li>
+      <li nz-menu-item (click)="logout()">
+        <span nz-icon nzType="logout"></span>
+        <span *ngIf="!isCollapsed" class="menu-text">Logout</span>
+      </li>
+    </ul>
+  </nz-sider>
+
+  <nz-layout > 
+    <nz-content>
+       <router-outlet></router-outlet>
+       </nz-content>
+       <nz-footer style="padding: 0%;"></nz-footer>
+       </nz-layout> 
+      </nz-layout>

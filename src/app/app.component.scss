@@ -1,0 +1,55 @@
+.logo{
+    height: 32px;
+    margin: 16PX;
+    background:rgb(2, 3, 10);
+    color: white;
+    
+}
+
+nz-header{ 
+    background: #fff; 
+    padding: 0;
+
+}
+     nz-content {
+     margin: 0 16px; 
+     background-color: white;
+     background-image: url("/bg2.jpg");
+     background-repeat: no-repeat;
+     background-size: 100%;
+     
+    }
+    nz-breadcrumb {
+         margin: 16px 0;
+    }
+    
+    inner-content {
+        padding: 24px; 
+        background: #fff; 
+        min-height: 360px; 
+    }
+    nz-footer {
+        text-align: center;
+    }
+    span{
+        color: #fff;
+        font-size: medium;
+        padding: 5px;
+    }
+    nz-sider{
+        height: 20cm;
+        display: block;
+        //position: fixed;
+        transition: all 0.3s ease; /* Smooth collapse animation */
+    }
+    
+    .menu-text:hover{
+      margin-left: 8px;
+      background-color: rgb(3, 1, 15);
+      
+    }
+    
+    
+    
+     
+   

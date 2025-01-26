@@ -1,0 +1,33 @@
+<div class="center-form">
+    <div style="margin: auto;">
+    <img src="logo.jpg" alt="Logo" claas="logo" style="height: 1.5cm; width: 1.5cm;">
+    <h2>Enter your login Credentials</h2>
+    <form nz-form [formGroup]="loginForm" (ngSubmit)="submitForm()" class="custom-form">
+        
+
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Please provide your Email!">
+                <nz-input-group nzPrefixIcon="user">
+                    <input type="text" nz-input formControlName="email" placeholder="Enter your email">
+
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Please enter your password!">
+                <nz-input-group nzPrefixIcon="lock">
+                    <input type="password" nz-input formControlName="password" placeholder="Enter your password">
+
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+
+        <button nz-button nzType="primary" nzBlock [disabled]="loginForm.invalid" class="w-100">
+            Login
+        </button>
+        
+    </form>
+    
+</div>
+</div>
